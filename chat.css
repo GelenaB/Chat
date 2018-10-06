@@ -1,4 +1,10 @@
 /* Chat containers */
+#parent {
+  overflow-y:scroll;
+  overflow-x:hidden;
+  height:500px;
+}
+
 .container {
     border: 2px solid #dedede;
     background-color: #f1f1f1;
@@ -20,6 +26,11 @@
     display: table;
 }
 
+/* colours:
+#287A86
+#A1BEC2
+#489B9F
+
 /* Style images */
 .container img {
     float: left;
@@ -37,13 +48,19 @@
 }
 
 /* Style time text */
-.time-right {
+.timeRight {
     float: right;
     color: #aaa;
 }
 
 /* Style time text */
-.time-left {
+.timeLeft {
     float: left;
     color: #999;
+}
+
+#container {
+  position: fixed;
+  width: 80%;
+  padding: 30px;
 }
