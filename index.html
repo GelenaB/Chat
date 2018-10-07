@@ -3,32 +3,24 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matching Game</title>
+    <title>Browser Chat</title>
     <meta name="description" content="">
-    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="chat.css">
 </head>
 <body>
-<div id="parent">
+<div id="chatBox">
 
-  <div id="first" class="container">
-    <!-- <img src="/w3images/bandmember.jpg" alt="Avatar"> -->
-    <p>Hello there. I'm Mr Chatty Bot. What's your name?</p>
+  <div class="msgBubble">
+    <i class="material-icons md-48">face</i>
+    <p>Hello there!<br><br>I'm Mr Chatty Bot. What's your name?</p>
     <span class="timeRight">11:00</span>
   </div>
 
-    <!--<div class="container">
-     <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right">
-    <p>Hey! I'm fine. Thanks for asking!</p>
-    <span class="timeLeft">11:01</span>
-  </div> -->
-
 </div>
 
-  <div id="output"></div>
-
-  <div id="container">
+  <div id="inputBox">
       <input type="text" id="input" value="">
   </div>
 <!-- jquery for enter key press -->

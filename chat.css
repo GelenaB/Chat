@@ -1,66 +1,55 @@
-/* Chat containers */
-#parent {
+
+body {
+    font-family: 'Roboto';
+    background-color: #F27653;
+}
+
+#chatBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   overflow-y:scroll;
-  /*overflow-x:hidden;*/
+  align-items: center;
+  /*overflow-x:hidden; */
   height:500px;
 }
 
-.container {
+#inputBox {
+  display: flex;
+  justify-content: center;
+  position: Centered;
+}
+
+#input {
+  height: 20px;
+  padding: 10px;
+}
+
+.msgBubble {
+    width: 60%;
     border: 2px solid #dedede;
-    background-color: #f1f1f1;
+    background-color: #fefefe;
     border-radius: 5px;
     padding: 10px;
     margin: 10px 0;
 }
 
-/* Darker chat container */
-.darker {
-    border-color: #ccc;
-    background-color: #ddd;
-}
-
-/* Clear floats */
-.container::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-/* colours:
-#287A86
-#A1BEC2
-#489B9F
-
-/* Style images */
-.container img {
-    float: left;
-    max-width: 60px;
-    width: 100%;
-    margin-right: 20px;
-    border-radius: 50%;
-}
-
 /* Style the right image */
-.container img.right {
+.material-icons {
     float: right;
     margin-left: 20px;
     margin-right:0;
 }
 
 /* Style time text */
-.timeRight {
+.timeRight, .nameRight {
     float: right;
-    color: #aaa;
+    color: #545C65;
 }
 
 /* Style time text */
 .timeLeft {
     float: left;
-    color: #999;
-}
-
-#container {
-  position: fixed;
-  width: 80%;
-  padding: 30px;
+    color: #545C65;
 }

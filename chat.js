@@ -1,84 +1,76 @@
-//need to keep chat input in one place
-//time out function for the bot
-
-//set time out for the first message
-//uppercase
-//remove text after enter
+// TODO:
+// Keep chat in one place - DONE
+// Time out function for the bot - DONE
+// Set time out for the first message
+// Set current time for the first message
+// Set current time for all other messages - DONE
+// Scroll to newer messages
+// In case name/city is not lower case, make it uppercase
+// Remove text after enter - DONE
+// Add names to differentiate messages - done for the bot
+// Narrow the chat box and center the input - DONE
+// End chat or have random messages appear
 
 
 //push enter key (using jquery), to run bot function.
-
-//on load
 $(document).keypress(function(e) {
   if (e.which == 13) {
     createBubble();
     timer();
   }});
 
-
-
-//$('input[id=input').val('');
-
-//document.getElementById('parent').scrollTop = 9999999;
-
-
-
 function createBubble() {
+
+  //creates a new div, appends paragraph and time. Applies classes.
   let newMsg = document.createElement("div");
+  newMsg.classList.add("msgBubble");
+
   let para = document.createElement("p");
-  newMsg.classList.add("container");
-  // and give it some content
   let input = document.getElementById("input").value;
   let msgContent = document.createTextNode(input);
-  // add the text node to the newly created div
-  newMsg.appendChild(para);
   para.appendChild(msgContent);
+  newMsg.appendChild(para);
+
 
   let currentTime = document.createElement("span");
   currentTime.classList.add("timeLeft");
   let fullTime = new Date().toTimeString().split(" ")[0].split(":");
   let hoursMins = document.createTextNode(`${fullTime[0]}:${fullTime[1]}`);
-  // add the text node to the newly created div
   currentTime.appendChild(hoursMins);
   newMsg.appendChild(currentTime);
-  //let parentDiv = document.getElementById("parent");
-  //parent.appendChild(newMsg);
 
-  // add the newly created element and its content into the DOM
-  let currentDiv = document.getElementById("parent");
+  let currentDiv = document.getElementById("chatBox");
   currentDiv.appendChild(newMsg);
-  //document.body.insertBefore(newMsg, currentDiv);
 };
 
   function timer() {
     setTimeout (function() {
+
     let newMsg = document.createElement("div");
-      let para = document.createElement("p");
-    newMsg.classList.add("container");
-    // and give it some content
-    let msgContent = botMsg();
-    // add the text node to the newly created div
+    let botName = document.createElement("span");
+    botName.classList.add("nameRight");
+    let name = document.createTextNode(`Mr Chatty Bot`);
+    botName.appendChild(name);
+    newMsg.appendChild(botName);
+
+    let para = document.createElement("p");
     newMsg.appendChild(para);
+    newMsg.classList.add("msgBubble");
+    let msgContent = botMsg();
     para.appendChild(msgContent);
 
     let currentTime = document.createElement("span");
     currentTime.classList.add("timeRight");
     let fullTime = new Date().toTimeString().split(" ")[0].split(":");
     let hoursMins = document.createTextNode(`${fullTime[0]}:${fullTime[1]}`);
-    // add the text node to the newly created div
     currentTime.appendChild(hoursMins);
     newMsg.appendChild(currentTime);
 
-
-    // add the newly created element and its content into the DOM
-    let currentDiv = document.getElementById("parent");
+    let currentDiv = document.getElementById("chatBox");
     currentDiv.appendChild(newMsg);
-      document.getElementById("input").value = "";
-    //let currentDiv = document.getElementById("output");
-    //document.body.insertBefore(newMsg, currentDiv);
-  }, 1000); //create a bot message
-
-}
+    document.getElementById("input").value = "";
+    }, 1000);
+  }
 
 let botMsgCounter = 0;
 function botMsg() {
@@ -94,23 +86,27 @@ function botMsg() {
   } else if (botMsgCounter === 3) {
     return document.createTextNode(`bla`);
   }
-
 }
 
-//var scroll = document.getElementsByClassName('container');
+//check if this is actually scrolling
+let element = document.getElementById('chatBox');
+element.scrollTop = element.scrollHeight;
+
+//var scroll = document.getElementsByClassName('msgBubble');
   // scroll.scrollTop = scroll.scrollHeight;
    //scroll.animate({scrollTop: scroll.scrollHeight});
 
 
 //$("#mydiv").scrollTop($("#mydiv")[0].scrollHeight);
 
-var element = document.getElementById('parent');
 
-element.scrollTop = element.scrollHeight;
+//$('input[id=input').val('');
+
+//document.getElementById('chatBox').scrollTop = 9999999;
 
 /*function scrollSmoothToBottom (id) {
-   var div = document.getElementsByClassName('container');
-   $('.container').animate({
+   var div = document.getElementsByClassName('msgBubble');
+   $('.msgBubble').animate({
       scrollTop: div.scrollHeight - div.clientHeight
    }, 500);
 } */
