@@ -2,6 +2,8 @@
 //time out function for the bot
 
 //set time out for the first message
+//uppercase
+//remove text after enter
 
 
 //push enter key (using jquery), to run bot function.
@@ -14,10 +16,17 @@ $(document).keypress(function(e) {
   }});
 
 
+
+//$('input[id=input').val('');
+
+//document.getElementById('parent').scrollTop = 9999999;
+
+
+
 function createBubble() {
   let newMsg = document.createElement("div");
   let para = document.createElement("p");
-  newMsg.classList.add("parent", "container");
+  newMsg.classList.add("container");
   // and give it some content
   let input = document.getElementById("input").value;
   let msgContent = document.createTextNode(input);
@@ -60,12 +69,15 @@ function createBubble() {
     currentTime.appendChild(hoursMins);
     newMsg.appendChild(currentTime);
 
+
     // add the newly created element and its content into the DOM
     let currentDiv = document.getElementById("parent");
     currentDiv.appendChild(newMsg);
+      document.getElementById("input").value = "";
     //let currentDiv = document.getElementById("output");
     //document.body.insertBefore(newMsg, currentDiv);
-  }, 3000); //create a bot message
+  }, 1000); //create a bot message
+
 }
 
 let botMsgCounter = 0;
@@ -82,4 +94,23 @@ function botMsg() {
   } else if (botMsgCounter === 3) {
     return document.createTextNode(`bla`);
   }
+
 }
+
+//var scroll = document.getElementsByClassName('container');
+  // scroll.scrollTop = scroll.scrollHeight;
+   //scroll.animate({scrollTop: scroll.scrollHeight});
+
+
+//$("#mydiv").scrollTop($("#mydiv")[0].scrollHeight);
+
+var element = document.getElementById('parent');
+
+element.scrollTop = element.scrollHeight;
+
+/*function scrollSmoothToBottom (id) {
+   var div = document.getElementsByClassName('container');
+   $('.container').animate({
+      scrollTop: div.scrollHeight - div.clientHeight
+   }, 500);
+} */
