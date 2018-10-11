@@ -8,7 +8,7 @@
 // Remove text after enter - DONE
 // Add bot name to differentiate messages - DONE
 // Narrow the chat box and center the input - DONE
-// End chat or have random messages appear
+// End chat or have random messages appear - DONE
 
 /*
  * First bot message - set current time
@@ -38,7 +38,7 @@ $(document).keypress(function(e) {
  function passUserArguments() {
    let input = document.createTextNode(document.getElementById("input").value);
    createBubble(null, input, "timeLeft");
- };
+ }
 
  function passBotArguments() {
    setTimeout (function() {
@@ -55,26 +55,32 @@ function createBubble(name, msgContent, timeClass) {
   let newBubble = document.createElement("div");
   if(name) {
     let botName = document.createElement("span");
-    botName.classList.add("nameRight");
     let nameNode = document.createTextNode(name);
-    botName.appendChild(nameNode);
-    newBubble.appendChild(botName);
+    $(botName).addClass("nameRight").append(nameNode);
+    $(newBubble).append(botName);
+    //botName.classList.add("nameRight");
+    //botName.appendChild(nameNode);
+    //newBubble.appendChild(botName);
   }
 
   let newParagraph = document.createElement("p");
-  newBubble.appendChild(newParagraph);
-  newBubble.classList.add("msgBubble");
-  newParagraph.appendChild(msgContent);
+  $(newBubble).addClass("msgBubble").append(newParagraph);
+  $(newParagraph).append(msgContent);
+  //newBubble.appendChild(newParagraph);
+  //newBubble.classList.add("msgBubble");
+  //newParagraph.appendChild(msgContent);
 
   let currentTime = document.createElement("span");
-  currentTime.classList.add(timeClass);
   let fullTime = new Date().toTimeString().split(" ")[0].split(":");
   let hoursMins = document.createTextNode(`${fullTime[0]}:${fullTime[1]}`);
-  currentTime.appendChild(hoursMins);
-  newBubble.appendChild(currentTime);
+  $(currentTime).addClass(timeClass).append(hoursMins);
+  $(newBubble).append(currentTime);
+  //currentTime.classList.add(timeClass);
+  //currentTime.appendChild(hoursMins);
+  //newBubble.appendChild(currentTime);
 
   let currentDiv = document.getElementById("chatBox");
-  currentDiv.appendChild(newBubble);
+  $(currentDiv).append(newBubble);
   scroll();
 }
 
@@ -83,14 +89,13 @@ function createBubble(name, msgContent, timeClass) {
  */
 
 function scroll() {
-  let element = document.getElementById('chatBox');
+  let element = document.getElementById("chatBox");
   element.scrollTop = element.scrollHeight;
 }
 
 /*
  * Bot messages
  */
-
 
 let botMsgCounter = 0;
 
@@ -114,11 +119,11 @@ function botMsg() {
  */
 
 function letterCapitalise(input) {
-  let words = input.split(' ');
+  let words = input.split(" ");
   for (let i = 0; i < words.length; i++) {
       words[i] = words[i].substr(0,1).toUpperCase() + words[i].substr(1);
   }
-  return words.join(' ');
+  return words.join(" ");
 }
 
 /*
@@ -129,14 +134,20 @@ function letterCapitalise(input) {
    sentenceArr = [
      "I like dogs. Do you like dogs? Dogs are cute.",
      "I don't like answering questions. But I have one for you - crunchy peanut butter or smooth?",
-     "If I was a person, I'd be a chatty TV host!",
+     "If I was a person, I'd be a chatty TV host! What about you?",
      "If you were a fruit, which one would you be?",
      "My biggest fear is... no wifi O_O",
-     "If you were a pencil, which colour would you be? I'd be orange!",
+     "Sometimes I like to repeat myself",
+     "If you were a crayola pencil, which colour would you be? I'd be orange!",
      "Today is a good day, agree?",
-     "I like sunny weather, but it's not good for the screen.",
+     "I like sunny weather, but it's not good for the screen. Don't you think so too?",
      "Summer or winter?",
-     "ʕ•ᴥ•ʔ",
+     "Look what I can do.. ʕ•ᴥ•ʔ",
+     "Do you have a hobby?",
+     "If you wrote a book how would you name it?... I'd call mine Chatty Botter",
+     "Least favourite pizza toppings?",
+     "Beach or mountains?",
+     "Favourite part of the day?"
    ]
-  return sentenceArr[Math.floor(Math.random() * 10)];
+  return sentenceArr[Math.floor(Math.random() * 15)];
  }
