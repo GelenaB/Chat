@@ -41,13 +41,11 @@ body {
     margin-right:0;
 }
 
-/* Style time text */
 .timeRight, .nameRight {
     float: right;
     color: #545C65;
 }
 
-/* Style time text */
 .timeLeft {
     float: left;
     color: #545C65;

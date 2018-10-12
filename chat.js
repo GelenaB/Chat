@@ -104,9 +104,9 @@ function botMsg() {
   let input = document.getElementById("input").value;
   let msgContent = document.createTextNode(input);
   if (botMsgCounter === 1) {
-    return document.createTextNode(`Nice to meet you ${letterCapitalise(input)}. Where are you from?`);
+    return document.createTextNode(`${letterCapitalise(input)} Where are you from?`);
   } else if (botMsgCounter === 2) {
-    return document.createTextNode(`${letterCapitalise(input)} sounds great! How's your week going?`);
+    return document.createTextNode(`${letterCapitalise(input)} How's your week going?`);
   } else if (botMsgCounter === 3) {
     return document.createTextNode(`Mine's busy chatting. Coffee or tea?`);
   } else if (botMsgCounter => 4) {
@@ -120,10 +120,20 @@ function botMsg() {
 
 function letterCapitalise(input) {
   let words = input.split(" ");
-  for (let i = 0; i < words.length; i++) {
-      words[i] = words[i].substr(0,1).toUpperCase() + words[i].substr(1);
+  if (words.length === 1 && botMsgCounter === 1) {
+    for (let i = 0; i < words.length; i++) {
+        words[i] = words[i].substr(0,1).toUpperCase() + words[i].substr(1);
+    } return "Nice to meet you " + words.join(" ") + "!";
+  } else if (words.length > 1 && botMsgCounter === 1) {
+    return "Nice to meet you!";
   }
-  return words.join(" ");
+  if (words.length === 1 && botMsgCounter === 2) {
+    for (let i = 0; i < words.length; i++) {
+        words[i] = words[i].substr(0,1).toUpperCase() + words[i].substr(1);
+    } return words.join(" ") + " sounds great!";
+  } else if (words.length > 1 && botMsgCounter === 2) {
+    return "That sounds great!";
+  }
 }
 
 /*
