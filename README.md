@@ -1,4 +1,4 @@
-# Javascript30
+# Browser Chat
 
 ## Table of Contents
 
@@ -7,7 +7,7 @@
 
 ## Overview
 
-Browser Chat
+I've created this Browser Chat as part of the application to Codeworks bootcamp.
 
 ## Preview
 
